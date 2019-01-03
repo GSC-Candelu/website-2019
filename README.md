@@ -7,8 +7,9 @@ http://www.gscandelu.it
 Stack
 ---
 
-- Python, HTML, CSS
-- Material Design
+- python, html, css
+- jinja2
+- material design
 
 
 Setup
