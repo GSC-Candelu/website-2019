@@ -19,11 +19,15 @@ Setup
 - `$> source env/bin/activate`
 - `$> pip install -r requirements.txt`
 
-Run
----
-- `$> sh run.sh`
-- visit `0.0.0.0:8000` on your browser
-
 Build
 ---
 - `$> sh build.sh`
+
+Run
+---
+
+*__WARNING: to run the website the build step is necessary__*
+
+
+- `$> sh run.sh`
+- visit `0.0.0.0:8000` on your browser
