@@ -162,6 +162,10 @@
     max-width: 550px;
     margin: auto;
   }
+
+  ul.no-style {
+    list-style-type: none;
+  }
   
   footer {
     background-image: url(images/footer-background.png);
