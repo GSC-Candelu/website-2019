@@ -2,32 +2,42 @@
 from jinja2 import Environment, FileSystemLoader
 
 
-# Converts Jinja templates into HTML files.
+# jinja templates into html files conversion
+SRC = './_src'
+DIST = './_build'
 
+IN_FILE_FORMAT= '_{}.html'
+OUT_FILE_FORMAT= '{}/{}.html'
 
-ENV = Environment(loader=FileSystemLoader('./_src'))
+ENV = Environment(loader=FileSystemLoader(SRC))
 
-# List of pages to be rendered -- MUST be listed according to their
-# order in the navigation bar
-PAGE_LIST = ['home', 'sagra', 'vini', 'eventi', 'pitona', 'contatti',]
-
-# Title of individual pages
-TITLES = {
-    'home': 'Gruppo Sportivo & Culturale',
-    'sagra': 'Gruppo Sportivo & Culturale | Sagra',
-    'vini': 'Gruppo Sportivo & Culturale | Mostra dei Vini',
-    'eventi': 'Gruppo Sportivo & Culturale | Eventi',
-    'pitona': 'Gruppo Sportivo & Culturale | Pitona',
-    'contatti': 'Gruppo Sportivo & Culturale | Contatti',
-}
 YEAR = 2019
+TITLE = 'Gruppo Sportivo & Culturale'
+PAGES_LIST = ['home', 'sagra', 'vini', 'eventi', 'pitona', 'contatti',]   # order is the same as nav
 
-for item in PAGE_LIST:
-    file_name = item + '.html'
-    template = ENV.get_template(file_name)
-    html = template.render(title=TITLES[item], year=YEAR)
+PAGE_DATA = {
+    'home': {'title': TITLE, }, 
+    'sagra': {'title': 'Sagra | {}'.format(TITLE), },
+    'vini': {'title': 'Mostra dei Vini | {}'.format(TITLE), },
+    'eventi': {'title': 'Eventi | {}'.format(TITLE), },
+    'pitona': {'title': 'Pitona | {}'.format(TITLE), },
+    'contatti': {'title': 'Contatti | {}'.format(TITLE), },
+}
 
-    # Write output in the corresponding HTML file
-    print 'Writing', file_name
-    with open(file_name, 'w') as out_file:
+for item in PAGES_LIST:
+    # fetch the template
+    in_fname = IN_FILE_FORMAT.format(item)
+    print('reading', in_fname)
+    template = ENV.get_template(in_fname)
+
+    # set some context and render the html
+    ctx = PAGE_DATA[item]
+    ctx.update({'year': YEAR})
+    print('data', ctx)
+    html = template.render(ctx)
+
+    # write the html in a file
+    out_fname = OUT_FILE_FORMAT.format(DIST, item)
+    print('writing', out_fname)
+    with open(out_fname, 'w') as out_file:
         out_file.write(html)
