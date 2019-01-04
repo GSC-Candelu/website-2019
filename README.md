@@ -1,4 +1,5 @@
 Gruppo Sportivo &amp; Culturale - Candelu'
+[![Build Status](https://travis-ci.org/GSC-Candelu/website-2019.svg?branch=master)](https://travis-ci.org/GSC-Candelu/website-2019)
 ===
 
 http://www.gscandelu.it
