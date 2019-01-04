@@ -18,8 +18,8 @@ PAGES_LIST = ['home', 'sagra', 'vini', 'eventi', 'pitona', 'contatti',]   # orde
 PAGE_DATA = {
     'home': {'title': TITLE, }, 
     'sagra': {'title': 'Sagra | {}'.format(TITLE), },
-    'vini': {'title': 'Mostra dei Vini | {}'.format(TITLE), },
-    'eventi': {'title': 'Eventi | {}'.format(TITLE), },
+    'vini': {'title': 'Mostra dei Vini | {}'.format(TITLE), 'aziende': 15},
+    'eventi': {'title': 'Eventi | {}'.format(TITLE), 'eventi': ['borella', 'pedalata', 'motoconcentrazione']},
     'pitona': {'title': 'Pitona | {}'.format(TITLE), },
     'contatti': {'title': 'Contatti | {}'.format(TITLE), },
 }
